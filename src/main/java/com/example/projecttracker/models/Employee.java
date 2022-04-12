@@ -19,13 +19,18 @@ public class Employee {
     @Column(name="employee_number")
     private int employeeNumber;
 
+    @ManyToOne
+    @JoinColumn(name="department_id", nullable = false)
+    private Department department;
+
 //    private List<Project> projects;
 
 
-    public Employee(String firstName, String lastName, int employeeNumber) {
+    public Employee(String firstName, String lastName, int employeeNumber, Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.employeeNumber = employeeNumber;
+        this.department = department;
     }
 
     public Employee(){
@@ -62,5 +67,13 @@ public class Employee {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
